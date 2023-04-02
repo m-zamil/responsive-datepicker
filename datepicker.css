@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Segoe UI Emoji';
+    src: url('./fonts/SegoeUIEmoji.ttf');
+    font-weight: 400;
+ }
+ @font-face {
+    font-family: 'Segoe UI Emoji';
+    src: url('./fonts/SegoeUISemilight.ttf');
+    font-weight: 300;
+ }
+ @font-face {
+    font-family: 'YuGothic UI Bold';
+    src: url('./fonts/YuGothicUIBold.ttf');
+    font-weight: 700;
+ }
+.datepicker-item{
+    font-family: "Segoe UI Emoji",sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    text-align: center;
+    border :2px solid #c1c9d3;
+    border-radius: 16px;
+    padding: 10px 20px;
+    max-width: 200px;
+    box-sizing: border-box;
+    line-height: 1;
+}
+.datepicker-item.active{
+
+}
+.datepicker-item:hover,
+.datepicker-item:focus,
+.datepicker-item:active{
+
+}
+.datepicker__day{
+    font-size: 2rem;
+    padding-bottom: 16px;
+
+}
+.datepicker__month{
+font-weight: 300;
+
+}
+.datepicker__date{
+    font-family: "YuGothic UI Bold",serif;
+    font-weight: 700;
+    font-size: 5rem;
+    line-height: 0.8;
+    padding-bottom: 24px;
+}
+.datepicker__year{
+font-weight: 300;
+}
