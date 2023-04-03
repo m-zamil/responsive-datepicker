@@ -1,124 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Date Picker</title>
 
-    <!-- Stylesheets for datepicker -->
-    <link rel="stylesheet" href="datepicker.css">
-    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
-</head>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet" />
 
-<body>
-
+    <!-- Stylesheets for swiper slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <!-- Stylesheet for datepicker -->
+    <link rel="stylesheet" href="datepicker.css" />
+  </head>
+  <body>
     <!-- Datepicker widget -->
-
-    <div class="datepicker_wrapper">
-        <div class="owl-carousel owl-theme">
-            <div class="datepicker-item item">
-                <div class="datepicker__day">TUE</div>
-                <div class="datepicker__month">FEB</div>
-                <div class="datepicker__date">14</div>
-                <div class="datepicker__year">2023</div>
-            </div>
-            <div class="datepicker-item item">
-                <div class="datepicker__day">TUE</div>
-                <div class="datepicker__month">FEB</div>
-                <div class="datepicker__date">14</div>
-                <div class="datepicker__year">2023</div>
-            </div>
-            <div class="datepicker-item item">
-                <div class="datepicker__day">TUE</div>
-                <div class="datepicker__month">FEB</div>
-                <div class="datepicker__date">14</div>
-                <div class="datepicker__year">2023</div>
-            </div>
-            <div class="datepicker-item item">
-                <div class="datepicker__day">TUE</div>
-                <div class="datepicker__month">FEB</div>
-                <div class="datepicker__date">14</div>
-                <div class="datepicker__year">2023</div>
-            </div>
-            <div class="datepicker-item item">
-                <div class="datepicker__day">TUE</div>
-                <div class="datepicker__month">FEB</div>
-                <div class="datepicker__date">14</div>
-                <div class="datepicker__year">2023</div>
-            </div>
-            <div class="datepicker-item item">
-                <div class="datepicker__day">TUE</div>
-                <div class="datepicker__month">FEB</div>
-                <div class="datepicker__date">14</div>
-                <div class="datepicker__year">2023</div>
-            </div>
-            <div class="datepicker-item item">
-                <div class="datepicker__day">TUE</div>
-                <div class="datepicker__month">FEB</div>
-                <div class="datepicker__date">14</div>
-                <div class="datepicker__year">2023</div>
-            </div>
-            <div class="datepicker-item item">
-                <div class="datepicker__day">TUE</div>
-                <div class="datepicker__month">FEB</div>
-                <div class="datepicker__date">14</div>
-                <div class="datepicker__year">2023</div>
-            </div>
-        </div>
-    </div>
+    <div class="swiper-container">
+      <!-- Slider prev btn -->
+      <div class="swiper-button-prev"></div>
+      <!-- Slider next btn -->
+      <div class="swiper-button-next"></div>
+      <!-- Slider items -->
+      <div class="datepicker-wrapper swiper">
+        <div class="swiper-wrapper"></div>
+      </div>
     </div>
 
-    <!-- Scripts for date picker -->
-    <script src="owlcarousel/jquery-3.6.4.min.js"></script>
-    <script src="owlcarousel/owl.carousel.min.js"></script>
-    <script>$(document).ready(function () {
-            $(".owl-carousel").owlCarousel({
-                margin: 20,
-                nav: true,
-                autoWidth: true,
-                stagePadding: 0,
-            });
-        });</script>
-    <script>
-        const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-        const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    <!-- Form with hidden input -->
 
+    <form action="/data">
+      <input type="hidden" name="Selected Date" id="selecteddate" value="" />
+      <!-- Demeo submit button -->
+      <br />
+      <br />
+      <br />
+      <input type="submit" value="Test - submit button" />
+    </form>
 
-        function last7Days() {
-            return [...Array(7).keys()].map(function (n) {
-                var d = new Date();
-                d.setDate(d.getDate() - n - 1);
-
-                return (function (date, month, year, day) {
-                    return [date < 10 ? '0' + date : date, month < 10 ? '0' + month : month, year, day].join('/');
-                })(d.getDate(), months[d.getMonth()], d.getFullYear(), days[d.getDay()]);
-            }).join(',');
-        }
-        function currentDay() {
-            var d = new Date();
-            return (function (date, month, year, day) {
-                return [date < 10 ? '0' + date : date, month < 10 ? '0' + month : month, year, day].join('/');
-            })(d.getDate(), months[d.getMonth()], d.getFullYear(), days[d.getDay()]);
-        }
-        function next30Days() {
-
-            return [...Array(30).keys()].map(function (i) {
-                var dd = new Date();
-
-                dd.setDate(dd.getDate() + i + 1);
-
-                return (function (date, month, year,day) {
-                    return [date < 10 ? '0' + date : date, month < 10 ? '0' + month : month, year,day].join('/');
-                })(dd.getDate(), months[dd.getMonth()], dd.getFullYear());
-            }).join(',');
-        }
-        console.log(last7Days())
-        console.log(next30Days())
-        console.log(currentDay())
-    </script>
-</body>
-
+    <script src="./script.js"></script>
+  </body>
 </html>

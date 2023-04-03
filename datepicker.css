@@ -1,54 +1,95 @@
-@font-face {
-    font-family: 'Segoe UI Emoji';
-    src: url('./fonts/SegoeUIEmoji.ttf');
-    font-weight: 400;
- }
- @font-face {
-    font-family: 'Segoe UI Emoji';
-    src: url('./fonts/SegoeUISemilight.ttf');
-    font-weight: 300;
- }
- @font-face {
-    font-family: 'YuGothic UI Bold';
-    src: url('./fonts/YuGothicUIBold.ttf');
-    font-weight: 700;
- }
-.datepicker-item{
-    font-family: "Segoe UI Emoji",sans-serif;
-    font-weight: 400;
-    font-size: 2rem;
-    text-align: center;
-    border :2px solid #c1c9d3;
-    border-radius: 16px;
-    padding: 10px 20px;
-    max-width: 200px;
-    box-sizing: border-box;
-    line-height: 1;
+:root {
+  --swiper-theme-color: black;
 }
-.datepicker-item.active{
+body {
+  margin: 200px 0;
+}
+* {
+  box-sizing: border-box;
+}
+.datepicker-wrapper {
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.datepicker-item {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #050505;
+  border: 2px solid #c1c9d3;
+  border-radius: 16px;
+  padding: 14px 18px;
+  max-width: 120px;
+  width: 120px;
+  box-sizing: border-box;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: all;
+  margin: 0 auto;
+}
+.datepicker-item.activated {
+  border-color: #0a744c;
+  color: #0a744c;
+  background-color: #f0f8f6;
+}
+.datepicker-item div {
+  pointer-events: none;
+  user-select: none;
+}
+.datepicker__day {
+  padding-bottom: 16px;
+}
+.datepicker__month {
+  font-weight: 300;
+}
+.datepicker__date {
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 0.8;
+  padding-bottom: 18px;
+}
+.datepicker__year {
+  font-weight: 300;
+}
+.swiper-container {
+  position: relative;
+  padding: 0 40px;
+  margin: 0px;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+.swiper-slide {
+  width: 150px;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  transform: scale(0.6);
+}
 
+@media (min-width: 342px) {
+  .swiper-container {
+    padding: 0 50px;
+    margin: 0 20px;
+  }
 }
-.datepicker-item:hover,
-.datepicker-item:focus,
-.datepicker-item:active{
 
-}
-.datepicker__day{
-    font-size: 2rem;
-    padding-bottom: 16px;
-
-}
-.datepicker__month{
-font-weight: 300;
-
-}
-.datepicker__date{
-    font-family: "YuGothic UI Bold",serif;
-    font-weight: 700;
-    font-size: 5rem;
-    line-height: 0.8;
-    padding-bottom: 24px;
-}
-.datepicker__year{
-font-weight: 300;
+@media (min-width: 768px) {
+  .datepicker-item {
+    font-size: 1.5rem;
+    max-width: 150px;
+    width: 150px;
+    padding: 20px 28px;
+  }
+  .datepicker__date {
+    font-size: 4rem;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    transform: scale(1);
+  }
 }
