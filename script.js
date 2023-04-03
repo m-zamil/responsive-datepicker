@@ -4,7 +4,7 @@ const months = ['', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP
 // last 7 days
 function last7Days() {
   return [...Array(7).keys()].map(function (n) {
-    var d = new Date();
+    let d = new Date();
     d.setDate(d.getDate() - n - 1);
 
     return (function (date, month, year, day) {
@@ -15,7 +15,7 @@ function last7Days() {
 
 //Current day
 function currentDay() {
-  var d = new Date();
+  let d = new Date();
   return [
     (function (date, month, year, day) {
       return [date < 10 ? '0' + date : date, month < 10 ? '0' + month : month, year, day];
@@ -26,13 +26,13 @@ function currentDay() {
 //Next 30 days
 function next30Days() {
   return [...Array(30).keys()].map(function (i) {
-    var dd = new Date();
+    let d = new Date();
 
-    dd.setDate(dd.getDate() + i + 1);
+    d.setDate(d.getDate() + i + 1);
 
     return (function (date, month, year, day) {
       return [date < 10 ? '0' + date : date, month < 10 ? '0' + month : month, year, day];
-    })(dd.getDate(), dd.getMonth() + 1, dd.getFullYear(), days[dd.getDay()]);
+    })(d.getDate(), d.getMonth() + 1, d.getFullYear(), days[d.getDay()]);
   });
 }
 const arr1 = last7Days().reverse();
@@ -50,13 +50,13 @@ for (var i = 0; i < datepickerData.length; i++) {
             <div class="datepicker__year">${datepickerData[i][2]}</div>
         </div></div>`;
 }
-var container = document.querySelector('.swiper-wrapper');
+let container = document.querySelector('.swiper-wrapper');
 container.innerHTML += datePickerItems;
 
 //Default selected date
 
-var selectDateInput = document.getElementById('selecteddate');
-var d = new Date();
+let selectDateInput = document.getElementById('selecteddate');
+let d = new Date();
 const [today] = d.toISOString().split('T');
 selectDateInput.value = today;
 
@@ -70,6 +70,7 @@ const swiper = new Swiper('.swiper', {
   centeredSlidesBounds: true,
   initialSlide: 7,
   breakpointsBase: 'container',
+  resizeObserver: true,
   grabCursor: true,
   watchSlidesVisibility: true,
   watchSlidesProgress: true,
@@ -84,50 +85,62 @@ const swiper = new Swiper('.swiper', {
     },
     510: {
       slidesPerView: 4,
+      initialSlide: 6,
       centeredSlides: false,
     },
     800: {
       slidesPerView: 5,
+      initialSlide: 7,
       centeredSlides: true,
     },
     960: {
       slidesPerView: 6,
+      initialSlide: 5,
       centeredSlides: false,
     },
     1120: {
       slidesPerView: 7,
+      initialSlide: 7,
       centeredSlides: true,
     },
     1280: {
       slidesPerView: 8,
+      initialSlide: 4,
       centeredSlides: false,
     },
     1440: {
       slidesPerView: 9,
+      initialSlide: 7,
       centeredSlides: true,
     },
     1600: {
       slidesPerView: 10,
+      initialSlide: 3,
       centeredSlides: false,
     },
     1760: {
-      slidesPerView: 7,
+      slidesPerView: 11,
+      initialSlide: 7,
       centeredSlides: true,
     },
     1920: {
-      slidesPerView: 8,
+      slidesPerView: 12,
+      initialSlide: 2,
       centeredSlides: false,
     },
     2080: {
-      slidesPerView: 9,
+      slidesPerView: 13,
+      initialSlide: 7,
       centeredSlides: true,
     },
     2240: {
-      slidesPerView: 10,
-      centeredSlides: true,
+      slidesPerView: 14,
+      initialSlide: 1,
+      centeredSlides: false,
     },
     2400: {
-      slidesPerView: 11,
+      slidesPerView: 15,
+      initialSlide: 7,
       centeredSlides: true,
     },
     2560: {
@@ -144,9 +157,8 @@ const swiper = new Swiper('.swiper', {
   },
 });
 //Change active element color to green
-let activeElement = document.querySelector('.swiper-slide-active .datepicker-item');
+let activeElement = document.querySelector('.swiper-slide:nth-child(8) .datepicker-item');
 activeElement.classList.add('activated');
-
 //User selected Date
 
 function selectDate() {
@@ -158,7 +170,6 @@ function selectDate() {
       activeElement = document.querySelector('.activated');
       activeElement.classList.remove('activated');
       e.target.classList.add('activated');
-      console.log('Selected date is: ', e.target.dataset.date);
     }
   });
 }
